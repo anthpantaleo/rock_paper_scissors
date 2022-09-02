@@ -95,9 +95,7 @@ function game() {
   }
   if (userScore === computerScore) {
     console.log(
-      console.log(
-        `Refresh, let's play again. The score was ${userScore} - ${computerScore}`
-      )
+      `Refresh, let's play again. The score was ${userScore} - ${computerScore}`
     );
   } else if (userScore > computerScore) {
     console.log(
