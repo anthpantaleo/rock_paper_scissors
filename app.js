@@ -8,7 +8,7 @@
 // A function is called to compare the two
 // A winner is determined
 // A score is updated where it is kept track of
-// First to 5 wins
+// Best of 5
 // There is a reset bututon which starts the whole thing again
 // They want the information to be determined within the console so we'll start there.
 
