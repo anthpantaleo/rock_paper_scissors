@@ -14,6 +14,9 @@
 
 // Randomly chooses between "Rock",  "Paper", and "Scissors"
 
+let computerScore = 0;
+let userScore = 0;
+
 function getComputerChoice() {
   const random = Math.random();
   if (random <= 0.33) {
@@ -25,100 +28,86 @@ function getComputerChoice() {
   }
 }
 
-// // Players Choice
+// round
 
-// function round(playerSelection, computerSelection) {
-//   if (playerSelection.toLowerCase() === computerSelection.toLowerCase()) {
-//     return `You both chose ${playerSelection}. That's a tie!`;
-//   } else if (
-//     playerSelection.toLowerCase() === "rock" &&
-//     computerSelection.toLowerCase() === "paper"
-//   ) {
-//     return `You chose Rock, and the Computer chose Paper. You lose.`;
-//     computerScore++;
-//   } else if (
-//     playerSelection.toLowerCase() === "rock" &&
-//     computerSelection.toLowerCase() === "scissors"
-//   ) {
-//     return `You chose Rock, and the Computer chose Scissors. You win!`;
-//     userScore++;
-//   } else if (
-//     playerSelection.toLowerCase() === "paper" &&
-//     computerSelection.toLowerCase() === "scissors"
-//   ) {
-//     `You chose Paper, and the Computer chose Scissors. You lose.`;
-//     computerScore++;
-//   } else if (
-//     playerSelection.toLowerCase() === "paper" &&
-//     computerSelection.toLowerCase() === "rock"
-//   ) {
-//     return `You chose Paper, and the Computer chose Rock. You win!`;
-//     userScore++;
-//   } else if (
-//     playerSelection.toLowerCase() === "scissors" &&
-//     computerSelection.toLowerCase() === "paper"
-//   ) {
-//     return `You chose Scissors, and the Computer chose Paper. You win!`;
-//     userScore++;
-//   } else {
-//     return `You chose Scissors, and the Computer chose Rock. You lose.`;
-//     computerScore++;
-//   }
-// }
+function round(playerSelection, computerSelection) {
+  if (playerSelection.toLowerCase() === computerSelection.toLowerCase()) {
+    console.log(
+      `You both chose ${playerSelection}. That's a tie! The score is: Humanity:${userScore} - Computer:${computerScore}`
+    );
+  } else if (
+    playerSelection.toLowerCase() === "rock" &&
+    computerSelection.toLowerCase() === "paper"
+  ) {
+    computerScore++;
+    console.log(
+      `You chose Rock, and the Computer chose Paper. You lose. The score is: Humanity:${userScore} - Computer:${computerScore}`
+    );
+  } else if (
+    playerSelection.toLowerCase() === "rock" &&
+    computerSelection.toLowerCase() === "scissors"
+  ) {
+    userScore++;
+    console.log(
+      `You chose Rock, and the Computer chose Scissors. You win! The score is: Humanity:${userScore} - Computer:${computerScore}`
+    );
+  } else if (
+    playerSelection.toLowerCase() === "paper" &&
+    computerSelection.toLowerCase() === "scissors"
+  ) {
+    computerScore++;
+    console.log(
+      `You chose Paper, and the Computer chose Scissors. You lose. The score is: Humanity:${userScore} - Computer:${computerScore}`
+    );
+  } else if (
+    playerSelection.toLowerCase() === "paper" &&
+    computerSelection.toLowerCase() === "rock"
+  ) {
+    userScore++;
+    console.log(
+      `You chose Paper, and the Computer chose Rock. You win! The score is: Humanity:${userScore} - Computer:${computerScore}`
+    );
+  } else if (
+    playerSelection.toLowerCase() === "scissors" &&
+    computerSelection.toLowerCase() === "paper"
+  ) {
+    userScore++;
+    console.log(
+      `You chose Scissors, and the Computer chose Paper. You win! The score is: Humanity:${userScore} - Computer:${computerScore}`
+    );
+  } else {
+    computerScore++;
+    console.log(
+      `You chose Scissors, and the Computer chose Rock. You lose. The score is: Humanity:${userScore} - Computer Aliens:${computerScore}`
+    );
+  }
+}
 
 //Game
 
 function game() {
-  let userScore = 0;
-  let computerScore = 0;
-  for (let i = 1; i <= 5; i++) {
-    let playerSelection = prompt(
-      `Humanity has been enslaved. You must play a computer in a best of five Rock, Paper, Scissors match. Enter 'Rock', 'Paper', or 'Scissors'.\n This is round ${i}.`
-    ).toLowerCase();
-    let computerSelection = getComputerChoice();
-    function round(playerSelection, computerSelection) {
-      if (playerSelection.toLowerCase() === computerSelection.toLowerCase()) {
-        return `You both chose ${playerSelection}. That's a tie! The score is: Humanity:${userScore}-Computer:${computerScore}`;
-      } else if (
-        playerSelection.toLowerCase() === "rock" &&
-        computerSelection.toLowerCase() === "paper"
-      ) {
-        return `You chose Rock, and the Computer chose Paper. You lose. The score is: Humanity:${userScore}-Computer:${computerScore}`;
-        computerScore++;
-      } else if (
-        playerSelection.toLowerCase() === "rock" &&
-        computerSelection.toLowerCase() === "scissors"
-      ) {
-        return `You chose Rock, and the Computer chose Scissors. You win! The score is: Humanity:${userScore}-Computer:${computerScore}`;
-        userScore++;
-      } else if (
-        playerSelection.toLowerCase() === "paper" &&
-        computerSelection.toLowerCase() === "scissors"
-      ) {
-        `You chose Paper, and the Computer chose Scissors. You lose. The score is: Humanity:${userScore}-Computer:${computerScore}`;
-        computerScore++;
-      } else if (
-        playerSelection.toLowerCase() === "paper" &&
-        computerSelection.toLowerCase() === "rock"
-      ) {
-        return `You chose Paper, and the Computer chose Rock. You win! The score is: Humanity:${userScore}-Computer:${computerScore}`;
-        userScore++;
-      } else if (
-        playerSelection.toLowerCase() === "scissors" &&
-        computerSelection.toLowerCase() === "paper"
-      ) {
-        return `You chose Scissors, and the Computer chose Paper. You win! The score is: Humanity:${userScore}-Computer:${computerScore}`;
-        userScore++;
-      } else {
-        return `You chose Scissors, and the Computer chose Rock. You lose. The score is: Humanity:${userScore}-Computer:${computerScore}`;
-        computerScore++;
-      }
-    }
+  for (let i = 1; i < 6; i++) {
+    const playerGameInput = prompt(
+      `Humanity has been attacked by Computer Aliens. You have been chosen to play against them in a Rock Paper Scissors match. First to 5. Choose one. The score is: Humanity: ${userScore} - Computer :${computerScore}. This is round ${i}.`
+    );
+    const computerGameChoice = getComputerChoice();
+    round(playerGameInput, computerGameChoice);
   }
-  if (userScore > computerScore) {
-    return `You WON! Humanity is saved! The score was: Humanity:${userScore}-Computer:${computerScore}`;
+  if (userScore === computerScore) {
+    console.log(
+      console.log(
+        `Refresh, let's play again. The score was ${userScore} - ${computerScore}`
+      )
+    );
+  } else if (userScore > computerScore) {
+    console.log(
+      `Humanity is saved thanks to you. The score was: ${userScore} - ${computerScore}`
+    );
   } else {
-    return `You Lost :( ! Humanity is doomed! The score was: Humanity:${userScore}-Computer:${computerScore}`;
+    console.log(
+      `Humanity is dead. You've lost to the Computer Aliens ${computerScore} - ${userScore}`
+    );
   }
 }
+
 game();
