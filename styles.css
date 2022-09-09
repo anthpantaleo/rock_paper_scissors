@@ -1,0 +1,122 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  /* border: 1px solid black; */
+}
+
+body {
+  font-family: "Courier New", Courier, monospace;
+  background-color: #fefae0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  font-size: 2rem;
+  font-weight: 500;
+  background-color: #2a9d8f;
+}
+
+button {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 1rem;
+  flex-wrap: wrap;
+  font-size: 32px;
+  gap: 20pxs;
+  padding-top: 30px;
+}
+
+.container div {
+  justify-content: center;
+}
+
+.player1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  flex: 2;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+}
+
+.infotitle {
+  margin-bottom: auto;
+}
+
+.score {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  font-size: 30px;
+}
+
+.computer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 2;
+}
+
+.playagain {
+  outline: none;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 3px;
+  padding: 12px 24px;
+  border: 0;
+  color: #3a4149;
+  background: #e7ebee;
+  line-height: 1.15;
+  font-size: 16px;
+}
+
+.playagain:hover {
+  transition: all 0.1s ease;
+  box-shadow: 0 0 0 0 #fff, 0 0 0 3px #219ebc;
+}
+
+img {
+  height: 100px;
+  width: 100px;
+}
+
+.gameinfo {
+  display: flex;
+  padding: 50px;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+}
+.footer {
+  background-color: #2a9d8f;
+  color: black;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  margin-top: auto;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer img {
+  height: 25px;
+  width: 25px;
+}

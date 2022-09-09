@@ -4,9 +4,56 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
     <title>Rock Paper Scissors</title>
   </head>
   <body>
+    <div class="header">Rock Paper Scissors</div>
+    <div class="container">
+      <div class="player1">
+        Player 1
+        <div class="player1-btn">
+          <button class="rock">
+            <img src="./photos/rocks.png" alt="rock" />
+          </button>
+          <button class="paper">
+            <img src="./photos/toilet-roll.png" alt="" />
+          </button>
+          <button class="scissors">
+            <img src="./photos/scissors.png" alt="scissors" />
+          </button>
+        </div>
+      </div>
+      <div class="info">
+        <div class="infotitle">Score</div>
+        <div class="score">
+          <div class="player1-score"></div>
+          -
+          <div class="computer-score"></div>
+        </div>
+        <div class="playagain"><button>Start Over</button></div>
+      </div>
+      <div class="computer">
+        Player 2
+        <div class="computer-imgs">
+          <img src="./photos/rocks.png" alt="rock" />
+          <img src="./photos/toilet-roll.png" alt="paper" />
+          <img src="./photos/scissors.png" alt="" />
+        </div>
+      </div>
+    </div>
+    <div class="gameinfo">
+      Welcome to Rock, Paper, Scissors! Please select an option under Player 1
+      to start the best of 5 game.
+    </div>
+    <div class="footer">
+      Made by anthpantaleo
+      <a
+        href="https://github.com/anthpantaleo/rock_paper_scissors"
+        target="_blank"
+        ><img src="./photos/github.png"
+      /></a>
+    </div>
     <script src="app.js"></script>
   </body>
 </html>
