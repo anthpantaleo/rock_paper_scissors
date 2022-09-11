@@ -11,30 +11,52 @@
 // Best of 5
 // There is a reset bututon which starts the whole thing again
 // They want the information to be determined within the console so we'll start there.
-
-const rock = document.querySelector(".rock");
-const paper = document.querySelector(".paper");
-const scissors = document.querySelector(".scissors");
-const gameinfo = document.querySelector(".gameinfo");
-const playerScore = document.querySelector(".player1-score");
-const computerDisplayScore = document.querySelector(".computer-score");
-
-// Scores
+// Scores & Round Number
 
 let computerScore = 0;
 let userScore = 0;
-let roundNUmber = 0;
-let userChoice = "";
+let roundNumber = 0;
 
-playerScore.innerText = userScore;
-computerDisplayScore.innerText = computerScore;
+const selection = document.querySelectorAll(".element");
+const gameinfo = document.querySelector(".gameinfo");
+const playerScore = document.querySelector(".player1-score");
+const computerDisplayScore = document.querySelector(".computer-score");
+const playAgain = document.querySelector(".playagain");
+
+// checks for round to exist
+
+function doesGameExist() {
+  if (roundNumber == 5 || computerScore == 3 || userScore == 3) {
+    if (computerScore == 3 || computerScore > userScore) {
+      gameinfo.innerText = `You've lost... Refresh or Select Start Over to try again.`;
+    } else if (userScore == 3 || userScore > computerScore) {
+      gameinfo.innerText = `You've won! Goodjob. You beat a computer that randomly chooses an option. Nice..? Refresh or Select Start Over to try again.`;
+    } else {
+      gameinfo.innerText = `That's a tie folks! Refresh or choose that Start Over Button to start again.`;
+    }
+  } else if (roundNumber == 4 && computerScore == 2 && userScore == 0) {
+    gameinfo.innerText = `You've lost before 5 rounds... Refresh or Select Start Over to try again.`;
+  } else if (roundNumber == 4 && computerScore == 0 && userScore == 2) {
+    gameinfo.innerText = `You've won in 4 rounds! Goodjob. You beat a computer that randomly chooses an option. Nice..? Refresh or Select Start Over to try again.`;
+  } else {
+  }
+}
+
 //Clickies
 
-rock.addEventListener("click", round("rock"));
-paper.addEventListener("click", round("paper"));
-scissors.addEventListener("click", round("scissors"));
+selection.forEach((selection) => {
+  selection.addEventListener("click", function () {
+    // Starts the round function
+    round(selection.value);
+  });
+});
+
+playAgain.addEventListener("click", function () {
+  window.location.reload();
+});
 
 // Randomly chooses between "Rock",  "Paper", and "Scissors"
+
 function getComputerChoice() {
   const random = Math.random();
   if (random <= 0.33) {
@@ -46,96 +68,55 @@ function getComputerChoice() {
   }
 }
 
-// function game(playerSelection, computerSelection){
-//   for(let i =1 ; i < 6; i++ ){
-//     gameinfo.innerText =
-//   }
-// }
-
-// round
-
 function round(playerSelection) {
-  // for (let i = 1; i < 6; i++) {
-  //   console.log(`${playerSelection}`);
-  // }
-  console.log(`${playerSelection}`);
+  if (roundNumber < 5 && computerScore != 3 && userScore != 3) {
+    let computerSelection = getComputerChoice();
+    if (playerSelection === computerSelection) {
+      roundNumber++;
+      gameinfo.innerText = `You both chose ${playerSelection}... Choose again.`;
+    } else if (playerSelection == "rock" && computerSelection == "paper") {
+      computerScore++;
+      roundNumber++;
+      playerScore.innerText = userScore;
+      computerDisplayScore.innerText = computerScore;
+      gameinfo.innerText = `You chose ${playerSelection}, and the Computer chose ${computerSelection}. Choose again.`;
+    } else if (playerSelection == "rock" && computerSelection == "scissors") {
+      userScore++;
+      roundNumber++;
+      playerScore.innerText = userScore;
+      computerDisplayScore.innerText = computerScore;
+      gameinfo.innerText = `You chose ${playerSelection}, and the Computer chose ${computerSelection}.  Choose again.`;
+    } else if (playerSelection == "paper" && computerSelection == "scissors") {
+      computerScore++;
+      roundNumber++;
+      playerScore.innerText = userScore;
+      computerDisplayScore.innerText = computerScore;
+      gameinfo.innerText = `You chose ${playerSelection}, and the Computer chose ${computerSelection}.  Choose again.`;
+    } else if (playerSelection == "paper" && computerSelection == "rock") {
+      userScore++;
+      roundNumber++;
+      playerScore.innerText = userScore;
+      computerDisplayScore.innerText = computerScore;
+      gameinfo.innerText = `You chose ${playerSelection}, and the Computer chose ${computerSelection}.  Choose again.`;
+    } else if (playerSelection == "scissors" && computerSelection == "rock") {
+      computerScore++;
+      roundNumber++;
+      playerScore.innerText = userScore;
+      computerDisplayScore.innerText = computerScore;
+      gameinfo.innerText = `You chose ${playerSelection}, and the Computer chose ${computerSelection}.  Choose again.`;
+    } else {
+      // scissors player, paper computer
+      userScore++;
+      roundNumber++;
+      playerScore.innerText = userScore;
+      computerDisplayScore.innerText = computerScore;
+      gameinfo.innerText = `You chose ${playerSelection}, and the Computer chose ${computerSelection}.  Choose again.`;
+    }
+  }
+  doesGameExist();
 }
 
-// function round(playerSelection, computerSelection) {
-//   for (let i = 1; i < 6; i++) {
-//     if (playerSelection.toLowerCase() === computerSelection) {
-//       console.log(
-//         `You both chose ${playerSelection}. That's a tie! The score is: Humanity:${userScore} - Computer:${computerScore}`
-//       );
-//     } else if (playerSelection === "rock" && computerSelection === "paper") {
-//       computerScore++;
-//       console.log(
-//         `You chose Rock, and the Computer chose Paper. You lose. The score is: Humanity:${userScore} - Computer:${computerScore}`
-//       );
-//     } else if (playerSelection === "rock" && computerSelection === "scissors") {
-//       userScore++;
-//       console.log(
-//         `You chose Rock, and the Computer chose Scissors. You win! The score is: Humanity:${userScore} - Computer:${computerScore}`
-//       );
-//     } else if (
-//       playerSelection === "paper" &&
-//       computerSelection === "scissors"
-//     ) {
-//       computerScore++;
-//       console.log(
-//         `You chose Paper, and the Computer chose Scissors. You lose. The score is: Humanity:${userScore} - Computer:${computerScore}`
-//       );
-//     } else if (playerSelection === "paper" && computerSelection === "rock") {
-//       userScore++;
-//       console.log(
-//         `You chose Paper, and the Computer chose Rock. You win! The score is: Humanity:${userScore} - Computer:${computerScore}`
-//       );
-//     } else if (
-//       playerSelection === "scissors" &&
-//       computerSelection === "paper"
-//     ) {
-//       userScore++;
-//       console.log(
-//         `You chose Scissors, and the Computer chose Paper. You win! The score is: Humanity:${userScore} - Computer:${computerScore}`
-//       );
-//     } else {
-//       computerScore++;
-//       console.log(
-//         `You chose Scissors, and the Computer chose Rock. You lose. The score is: Humanity:${userScore} - Computer Aliens:${computerScore}`
-//       );
-//     }
-//   }
-// }
+// Updates Display
 
-//Game
-
-// function game() {
-//   for (let i = 1; i < 6; i++) {
-//     gameinfo.innerText = `You selected ${playerSelection}...`;
-//   }
-// }
-
-// function game() {
-//   for (let i = 1; i < 6; i++) {
-//     const playerGameInput = prompt(
-//       `Humanity has been attacked by Computer Aliens. You have been chosen to play against them in a Rock Paper Scissors match. First to 5. Choose one. The score is: Humanity: ${userScore} - Computer :${computerScore}. This is round ${i}.`
-//     );
-//     const computerGameChoice = getComputerChoice();
-//     round(playerGameInput, computerGameChoice);
-//   }
-//   if (userScore === computerScore) {
-//     console.log(
-//       `Refresh, let's play again. The score was ${userScore} - ${computerScore}`
-//     );
-//   } else if (userScore > computerScore) {
-//     console.log(
-//       `Humanity is saved thanks to you. The score was: ${userScore} - ${computerScore}`
-//     );
-//   } else {
-//     console.log(
-//       `Humanity is dead. You've lost to the Computer Aliens ${computerScore} - ${userScore}`
-//     );
-//   }
-// }
-
-// game();
+computerDisplayScore.innerText = computerScore;
+playerScore.innerText = userScore;

@@ -79,8 +79,9 @@ button {
   outline: none;
   cursor: pointer;
   font-weight: 600;
+  font-size: 32px;
   border-radius: 3px;
-  padding: 12px 24px;
+  padding: 10px 20px;
   border: 0;
   color: #3a4149;
   background: #e7ebee;
@@ -113,6 +114,7 @@ img {
   padding: 10px;
   margin-top: auto;
   align-items: center;
+  font-size: 28px;
   gap: 10px;
 }
 
