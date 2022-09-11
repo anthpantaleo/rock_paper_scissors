@@ -68,6 +68,11 @@ function getComputerChoice() {
   }
 }
 
+function updateDisplay() {
+  computerDisplayScore.innerText = computerScore;
+  playerScore.innerText = userScore;
+}
+
 function round(playerSelection) {
   if (roundNumber < 5 && computerScore != 3 && userScore != 3) {
     let computerSelection = getComputerChoice();
@@ -77,39 +82,33 @@ function round(playerSelection) {
     } else if (playerSelection == "rock" && computerSelection == "paper") {
       computerScore++;
       roundNumber++;
-      playerScore.innerText = userScore;
-      computerDisplayScore.innerText = computerScore;
+      updateDisplay();
       gameinfo.innerText = `You chose ${playerSelection}, and the Computer chose ${computerSelection}. Choose again.`;
     } else if (playerSelection == "rock" && computerSelection == "scissors") {
       userScore++;
       roundNumber++;
-      playerScore.innerText = userScore;
-      computerDisplayScore.innerText = computerScore;
+      updateDisplay();
       gameinfo.innerText = `You chose ${playerSelection}, and the Computer chose ${computerSelection}.  Choose again.`;
     } else if (playerSelection == "paper" && computerSelection == "scissors") {
       computerScore++;
       roundNumber++;
-      playerScore.innerText = userScore;
-      computerDisplayScore.innerText = computerScore;
+      updateDisplay();
       gameinfo.innerText = `You chose ${playerSelection}, and the Computer chose ${computerSelection}.  Choose again.`;
     } else if (playerSelection == "paper" && computerSelection == "rock") {
       userScore++;
       roundNumber++;
-      playerScore.innerText = userScore;
-      computerDisplayScore.innerText = computerScore;
+      updateDisplay();
       gameinfo.innerText = `You chose ${playerSelection}, and the Computer chose ${computerSelection}.  Choose again.`;
     } else if (playerSelection == "scissors" && computerSelection == "rock") {
       computerScore++;
       roundNumber++;
-      playerScore.innerText = userScore;
-      computerDisplayScore.innerText = computerScore;
+      updateDisplay();
       gameinfo.innerText = `You chose ${playerSelection}, and the Computer chose ${computerSelection}.  Choose again.`;
     } else {
       // scissors player, paper computer
       userScore++;
       roundNumber++;
-      playerScore.innerText = userScore;
-      computerDisplayScore.innerText = computerScore;
+      updateDisplay();
       gameinfo.innerText = `You chose ${playerSelection}, and the Computer chose ${computerSelection}.  Choose again.`;
     }
   }
@@ -117,6 +116,4 @@ function round(playerSelection) {
 }
 
 // Updates Display
-
-computerDisplayScore.innerText = computerScore;
-playerScore.innerText = userScore;
+updateDisplay();
